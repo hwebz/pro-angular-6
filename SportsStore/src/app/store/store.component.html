@@ -2,12 +2,14 @@
   <div class="row">
     <div class="col bg-dark text-white">
       <a class="navbar-brand">SPORTS STORE</a>
+      <cart-summary></cart-summary>
     </div>
   </div>
   <div class="row">
     <div class="col-3 p-2">
       <button class="btn btn-block btn-outline-primary" (click)="changeCategory()" [class.active]="selectedCategory == null || selectedCategory == ''">Home</button>
       <button class="btn btn-outline-primary btn-block" *ngFor="let cat of categories" [class.active]="cat == selectedCategory" (click)="changeCategory(cat)">{{cat}}</button>
+      <button class="btn btn-block btn-danger m-t-3" routerLink="/admin">Admin</button>
     </div>
     <div class="col-9 p-2">
       <div *ngFor="let product of products" class="card m-1 p-1 bg-light">
@@ -19,6 +21,7 @@
         </h4>
         <div class="card-text bg-white p-1">
           {{product.description}}
+          <button class="btn btn-success btn-sm float-right" (click)="addProductToCart(product)">Add To Cart</button>
         </div>
       </div>
 
